@@ -10,7 +10,7 @@ username = 'elastic_user'
 password = 'elastic_password'
 
 # Connect to your Elasticsearch instance
-es = Elasticsearch(['https://ELASTIC_IP:9200'], ca_certs='/home/testuser/ca.crt', basic_auth=(username, password))
+es = Elasticsearch(['https://ELASTIC_IP:9200'], ca_certs='/PATH_TO_CA_CERT', basic_auth=(username, password))
 
 # Define your query to retrieve all data
 query = {
