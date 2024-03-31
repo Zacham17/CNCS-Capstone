@@ -9,8 +9,7 @@ successful_connections = 0
 failed_connections = 0
 
 # Specify the path to the output file
-input_file = 'elasticsearch_data.txt'
-
+input_file = 'INPUT_FILE_ NAME
 # Open the output file for reading
 with open(input_file, 'r') as f:
     # Read lines from the file
