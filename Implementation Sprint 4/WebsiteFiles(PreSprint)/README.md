@@ -1,3 +1,5 @@
+## Directory Overview
+
 The files listed in this directory are the initial files that I started with for the basic ticketing site
 developed in Django for this capstone project. The code in this directory is directly inspired by the resource listed below:
 
