@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Tickets{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <style>
+    /* Styles for the sliding window */
+    #sidebar {
+      height: 100%;
+      width: 0; /* Initially hidden */
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      z-index: 1000; /* Ensure it's above other content */
+    }
+
+    #sidebar.active {
+      width: 75%; /* Width when sidebar is open */
+    }
+
+    #sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    #sidebar a:hover {
+      color: #f1f1f1;
+    }
+
+    #sidebar .close-btn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    /* Style for page content sections */
+    .page-content {
+      display: none; /* Initially hidden */
+      padding: 0;
+      margin: 0;
+      height: calc(100% - 60px); /* Adjust height to fill the remaining space */
+      width: 100%;
+    }
+
+    .page-content.active {
+      display: block; /* Show when active */
+    }
+
+    .page-content iframe {
+      width: 100%;
+      height: 100%; /* Fill the entire height of the page content */
+      border: none; /* Remove iframe border */
+    }
+
+    /* Header style */
+    .page-header {
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a class="logo">Ticketing System</a>
+    <div class="header-right">
+      <a href="{% url 'index' %}">Tickets</a>
+      <a href="/admin/">Admin Site</a>
+    </div>
+  </div>
+  <!-- Button to open the sidebar -->
+  <button onclick="openNav()">View Kibana Dashboards</button>
+
+  <!-- The sidebar -->
+  <div id="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+    <!-- Buttons for navigating between different pages -->
+    <button onclick="showPage('page1')">Filebeat</button>
+    <button onclick="showPage('page2')">Metricbeat</button>
+    <button onclick="showPage('page3')">Auditbeat</button>
+    <!-- Content sections for different pages -->
+    <div id="page1" class="page-content">
+      <!-- Page 1 Header -->
+      <div class="page-header">
+        <h2>Filebeat Syslog</h2>
+      </div>
+      <!-- Content for Page 1 -->
+      <iframe src="https://192.168.229.137:5601/app/dashboards#/view/Filebeat-syslog-dashboard-ecs?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))"></iframe>
+    </div>
+    <div id="page2" class="page-content">
+      <!-- Page 2 Header -->
+      <div class="page-header">
+        <h2>Metricbeat System Overview</h2>
+      </div>
+      <!-- Content for Page 2 -->
+      <iframe src="https://192.168.229.137:5601/app/dashboards#/view/Metricbeat-system-overview-ecs?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))"></iframe>
+    </div>
+    <div id="page3" class="page-content">
+      <!-- Page 3 Header -->
+      <div class="page-header">
+        <h2>Auditbeat System Overview</h2>
+      </div>
+      <!-- Content for Page 3 -->
+      <iframe src="https://192.168.229.137:5601/app/dashboards#/view/2be46cb0-27f2-11e9-89af-fd12d59dac90-ecs?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))"></iframe>
+    </div>
+  </div>
+  <div id="body">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("sidebar").classList.add("active");
+      showPage('page1'); // Show the first page when the sidebar is opened
+    }
+
+    function closeNav() {
+      document.getElementById("sidebar").classList.remove("active");
+    }
+
+    function showPage(pageId) {
+      // Hide all page content sections
+      var pages = document.getElementsByClassName("page-content");
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove("active");
+      }
+
+      // Show the selected page content section
+      document.getElementById(pageId).classList.add("active");
+    }
+  </script>
+</body>
+</html>
