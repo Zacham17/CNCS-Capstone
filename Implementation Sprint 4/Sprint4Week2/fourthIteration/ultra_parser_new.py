@@ -94,6 +94,8 @@ def parse_heartbeat(data):
                 monitor_name = source.get("monitor", {}).get("name", "")
                 started_at = source.get("state", {}).get("started_at", "")
                 if monitor_name:
+                    # Remove fractional seconds before parsing
+                    started_at = started_at.split(".")[0] + "+00:00"
                     up_services[monitor_name] = {"Timestamp": timestamp, "Started At": started_at}
                     
     # Calculate duration for up services
@@ -174,37 +176,37 @@ filebeat_results = parse_filebeat(filebeat_data)
 
 # Generate the output file
 with open("output.txt", "w") as output_file:
-    output_file.write("\033[92mAuditbeat Results:\033[0m\n")
+    output_file.write("Auditbeat Results:\n")
     for host, details in auditbeat_results.items():
-        output_file.write(f"\033[94mHost: {host}\033[0m\n")
+        output_file.write(f"Host: {host}\n")
         output_file.write(f"  Users: {', '.join(details['Users'])}\n")
         output_file.write(f"  Unique Processes: {details['Unique Processes']}\n")
         output_file.write(f"  OS Distribution: {details['OS Distribution']}\n")
         output_file.write(f"  Uptime: {details['Uptime']}\n")
 
     output_file.write("\n")
-    output_file.write("\033[92mHeartbeat Results:\033[0m\n")
-    output_file.write("\033[94mDown Services:\033[0m " + str(len(down_services_count)) + "\n")
-    output_file.write("\033[94mList of Down Services:\033[0m\n")
+    output_file.write("Heartbeat Results:\n")
+    output_file.write("Down Services: " + str(len(down_services_count)) + "\n")
+    output_file.write("List of Down Services:\n")
     for service, timestamp in down_services_count.items():
         output_file.write(f"  {service}: Found down at {timestamp}\n")
-    output_file.write("\033[94mUp Services:\033[0m " + str(len(up_services)) + "\n")
-    output_file.write("\033[94mList of Up Services and Duration:\033[0m\n")
+    output_file.write("Up Services " + str(len(up_services)) + "\n")
+    output_file.write("List of Up Services and Duration:\n")
     for service, info in up_services.items():
         output_file.write(f"  {service}: Up since {info['Timestamp']} (Duration: {info['Duration']})\n")
 
     output_file.write("\n")
-    output_file.write("\033[92mMetricbeat Results:\033[0m\n")
+    output_file.write("Metricbeat Results:\n")
     monitored_hosts = metricbeat_results
-    output_file.write("\033[94mHosts being Monitored:\033[0m\n")
+    output_file.write("Hosts being Monitored:\n")
     for host, details in monitored_hosts.items():
         output_file.write(f"\nHostname: {host}\n")
         for metric, value in details.items():
             output_file.write(f"    {metric}: {value}\n")
 
     output_file.write("\n")
-    output_file.write("\033[92mFilebeat Results:\033[0m\n")
-    output_file.write("\033[94mImportant Events:\033[0m\n")
+    output_file.write("Filebeat Results:\n")
+    output_file.write("Important Events:\n")
     for event, info in filebeat_results.items():
         service_name, event_type = event
         output_file.write(f"  Service: {service_name}\n")
