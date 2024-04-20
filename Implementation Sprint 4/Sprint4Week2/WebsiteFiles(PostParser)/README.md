@@ -1,6 +1,6 @@
 ## Directory Overview
 
-The files listed in this directory are the initial files that I started with for the basic ticketing site
-developed in Django for this capstone project. The code in this directory is directly inspired by the resource listed below:
+The files listed in this directory are the files to make up the django application website after being integrated with the SIEM functionality and parsing scripts
+that I have written. This code is updated from the original code, includes updated visuals for the web page , a sliding window containing interactable kibana dashboards, and a view of the Elasticsearch query parsing script results output. The code in this directory is inspired by the resource listed below:
 
 Sankova, S. (2021, July 22). Basic web app with Django. Medium. https://medium.com/@gingerkirsch/basic-web-app-with-django-1cd947d16240
