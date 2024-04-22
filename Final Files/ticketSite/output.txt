@@ -1,0 +1,39 @@
+Auditbeat Results:
+Host: database
+  Users: logstash, dbuser, kibana, root, elasticsearch
+  Unique Processes: 100
+  OS Distribution: Ubuntu 22.04.3 LTS (Jammy Jellyfish)
+  Uptime: 69 days, 17 hours, 13 minutes
+
+Heartbeat Results:
+Down Services: 2
+List of Down Services:
+  Apache Website: Found down at 2024-04-21T07:15:15.585Z
+  Elastic Rest: Found down at 2024-04-21T01:17:26.427Z
+
+Up Services: 2
+List of Up Services and Duration:
+  Elastic Rest: Up since 2024-04-21T22:20:45.135Z (Duration: 0d 21h 3m 13s)
+  Apache Website: Up since 2024-04-21T22:20:40.264Z (Duration: 0d 15h 5m 19s)
+
+Metricbeat Results:
+Host: database
+  Timestamp: 2024-04-20 21:14:17
+  Total Disk Size (MB): 21302.37
+  Free Disk Size (MB): 6733.52
+  Used Disk Size (MB): 14568.84
+  Disk Utilization (%): 68.39%
+  Total Memory (MB): 7902.43
+  Used Memory (MB): 7223.42
+  Memory Utilization (%): 91.41%
+  CPU Utilization: 96.05%
+  Inbound Network Traffic (MB): 1329.91
+  Outbound Network Traffic (MB): 15423.93
+
+
+Filebeat Results:
+Important Events:
+  Service: logstash
+      Event: Stopped
+      2024-04-21T22:27:08.000Z
+    Previous Occurrences of this Event: 1742
