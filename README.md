@@ -1,4 +1,4 @@
 # CNCS-Capstone
-This repository will cover the capstone brainstorming, development, and execution processes for my CNCS Capstone Project. This repository will evolve over the course of the next year.
+This repository covers the capstone brainstorming, development, and execution processes for my CNCS Capstone Project. The project is a Proof of Concept demonstration of how incorporating SIEM functionality into a ticketing system can inprove ticket resolution times by helping identify the source of reported issues. This was accomplished by developing a simple ticketing system using a Django Web application, and then integrating the functionality of the Elastic Stack as a SIEM system using scripts to query and parse the data gathered by it. This page is the main code page, containing all developed code for this project. The file called "Final Code" contains all of the finished and functional code for this project. For more information and documentation on the project, you can go to the Wiki page.
 
-You can reach the capstone landing page [here](https://github.com/Zacham17/CNCS-Capstone/wiki).
+You can reach the capstone Wiki landing page [here](https://github.com/Zacham17/CNCS-Capstone/wiki).
