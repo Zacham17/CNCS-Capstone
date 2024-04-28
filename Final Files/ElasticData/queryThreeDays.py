@@ -7,7 +7,7 @@ username = 'elastic_user'
 password = 'elastic_password'
 
 # Connect to your Elasticsearch instance
-es = Elasticsearch(['https://192.168.229.137:9200'], ca_certs='./ca.crt', basic_auth=(username, password))
+es = Elasticsearch(['https://ELASTIC_SERVER_IP:9200'], ca_certs='./ca.crt', basic_auth=(username, password))
 
 # Calculate the start and end dates for the past 3 days
 end_date = datetime.now()
