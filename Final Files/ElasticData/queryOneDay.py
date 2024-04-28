@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 from elasticsearch import Elasticsearch
 
 # Specify Elastic Username and Password
-username = 'elastic'
-password = 'ABCD1234'
+username = 'elastic_user'
+password = 'elastic_password'
 
 # Connect to your Elasticsearch instance
 es = Elasticsearch(['https://192.168.229.137:9200'], ca_certs='./ca.crt', basic_auth=(username, password))
