@@ -12,7 +12,7 @@ This repository covers the capstone brainstorming, development, and execution pr
 
 <div align="center">
   
-### You can reach the capstone Wiki landing page [here](https://github.com/Zacham17/CNCS-Capstone/wiki)!
+### You can reach the Capstone Wiki landing page [HERE](https://github.com/Zacham17/CNCS-Capstone/wiki)!
 
 </div>
 
